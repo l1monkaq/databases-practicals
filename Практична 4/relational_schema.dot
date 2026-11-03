@@ -1,0 +1,11 @@
+digraph Library { graph [rankdir=LR, bgcolor="white", pad=.25, nodesep=.75, ranksep=1.2]; node [shape=record, fontname="DejaVu Sans", fontsize=11, style="rounded,filled", fillcolor="#eaf2ff", color="#456d9d"]; edge [fontname="DejaVu Sans", fontsize=10, color="#65748b"];
+books[label="{books|PK book_id : INTEGER|title : VARCHAR(200) NOT NULL|author : VARCHAR(150) NOT NULL|isbn : VARCHAR(17) UNIQUE|publication_year : SMALLINT|genre : VARCHAR(80)}"];
+copies[label="{copies|PK copy_id : INTEGER|FK book_id : INTEGER NOT NULL|inventory_number : VARCHAR(30) UNIQUE|condition : VARCHAR(20)}"];
+readers[label="{readers|PK reader_id : INTEGER|full_name : VARCHAR(150)|card_number : VARCHAR(30) UNIQUE|phone : VARCHAR(25)|registered_at : DATE}"];
+employees[label="{employees|PK employee_id : INTEGER|full_name : VARCHAR(150)|role : VARCHAR(60)}"];
+loans[label="{loans|PK loan_id : INTEGER|FK copy_id : INTEGER NOT NULL|FK reader_id : INTEGER NOT NULL|FK employee_id : INTEGER NOT NULL|issued_at : DATE|due_at : DATE|returned_at : DATE}"];
+books -> copies [label="1 → 0..N", color="#328a6c"];
+copies -> loans [label="1 → 0..N", color="#328a6c"];
+readers -> loans [label="1 → 0..N", color="#328a6c"];
+employees -> loans [label="1 → 0..N", color="#328a6c"];
+}
