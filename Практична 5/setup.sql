@@ -1,0 +1,11 @@
+-- Виконати від імені адміністратора у базі postgres (роль і база створюються окремо).
+-- ЗАМІНІТЬ пароль на власний; не зберігайте реальний пароль у GitHub.
+CREATE ROLE college_student LOGIN CREATEDB PASSWORD 'CHANGE_ME_LOCALLY';
+-- У psql, після входу під college_student в базу postgres:
+-- CREATE DATABASE college WITH ENCODING 'UTF8' TEMPLATE template0;
+-- У psql, після підключення до college:
+-- CREATE SCHEMA college;
+-- SELECT version();
+-- SELECT current_database();
+-- SELECT current_user;
+-- SELECT schema_name FROM information_schema.schemata WHERE schema_name='college';
